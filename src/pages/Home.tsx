@@ -35,7 +35,8 @@ export const Home = () => {
         <h2 className="pb-1 font-semibold text-center">Ranking</h2>
         <div>
           {
-            !ranking
+
+            ranking.length == 0
               ? <p>No hay usuarios registrados</p>
               : (
                 <table className="border-separate border-spacing-x-4" style={{borderCollapse:"collapse"}}>
