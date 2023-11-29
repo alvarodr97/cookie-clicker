@@ -1,4 +1,5 @@
 let request: IDBOpenDBRequest;
+let requestInit: IDBOpenDBRequest;
 let db: IDBDatabase;
 let version = 1;
 
@@ -15,10 +16,10 @@ export enum Stores {
 export const initDB = (): Promise<boolean> => {
   return new Promise((resolve) => {
     // open the connection
-    request = indexedDB.open("myCookieDB");
+    requestInit = indexedDB.open("myCookieDB");
 
-    request.onupgradeneeded = () => {
-      db = request.result;
+    requestInit.onupgradeneeded = () => {
+      db = requestInit.result;
 
       // if the data object store doesn't exist, create it
       if (!db.objectStoreNames.contains(Stores.Users)) {
@@ -27,14 +28,14 @@ export const initDB = (): Promise<boolean> => {
       }
     };
 
-    request.onsuccess = () => {
-      db = request.result;
+    requestInit.onsuccess = () => {
+      db = requestInit.result;
       version = db.version;
-      console.log("request.onsuccess - initDB", version);
+      console.log("requestInit.onsuccess - initDB", version);
       resolve(true);
     };
 
-    request.onerror = () => {
+    requestInit.onerror = () => {
       resolve(false);
     };
   });
