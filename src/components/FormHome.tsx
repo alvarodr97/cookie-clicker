@@ -28,7 +28,8 @@ export const FormHome = () => {
       return;
     }
 
-    navigate("/game", { state: { name }, replace: true });
+    // navigate("/game", { state: { name }, replace: true });
+    navigate("/game", { state: { name } });
   };
 
   return (
