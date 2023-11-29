@@ -9,6 +9,9 @@ import App from "./App.tsx";
 import "./index.css";
 import { Game } from "./pages/Game.tsx";
 import { Home } from "./pages/Home.tsx";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import { register as registerServiceWorker } from './serviceWorkerRegistration.js';
 
 const router = createBrowserRouter([
   {
@@ -36,3 +39,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <RouterProvider router={router} />
   </React.StrictMode>
 );
+
+registerServiceWorker();
