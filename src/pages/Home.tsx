@@ -1,13 +1,18 @@
 import { FormHome } from "../components/FormHome"
-import { useDB } from "../hooks/useDB";
+import { useRanking } from "../hooks/useRanking";
+import { useStatus } from "../App";
+// import { useDB } from "../hooks/useDB";
 
 export const Home = () => {
 
-  const { status, isLoading, ranking } = useDB();
+  // const { status, isLoading, ranking } = useDB();
+  const {status} = useStatus();
 
-  if (isLoading) return <div>Cargando...</div>
+  const { ranking, isLoading } = useRanking(status);
 
-  if (!isLoading && !status) return <div>El servidor no responde</div>
+  if (isLoading) return <div>Cargando página principal...</div>
+
+  // if (!isLoading && !status) return <div>El servidor no responde</div>
 
   const getRankingIndex = (index: number) => {
     const color = ["bg-[#D6AF36]", "bg-[#D7D7D7]", "bg-[#A77044]"]
@@ -17,6 +22,7 @@ export const Home = () => {
   return (
     <div className="flex flex-col md:flex-row gap-y-10 gap-x-0 md:gap-x-10 md:gap-y-0">
       <div className="p-6">
+        
       <FormHome />
 
       </div>
@@ -35,7 +41,7 @@ export const Home = () => {
                       <td className="underline">Nivel</td>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody data-testid="tbody">
                     {/* Mostrar solo los 10 primeros de la clasificación */}
                   {
                     ranking.sort((a, b) => b.nivel - a.nivel ).slice(0,10).map((x, index) => (
