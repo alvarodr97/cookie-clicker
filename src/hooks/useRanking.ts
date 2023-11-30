@@ -3,6 +3,7 @@ import { Stores, User, getStoreData } from "../lib/db";
 
 export const useRanking = (status: boolean) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [rankingError, setRankingError] = useState("");
   const [ranking, setRanking] = useState<User[]>([]);
 
   // Ranking
@@ -14,8 +15,12 @@ export const useRanking = (status: boolean) => {
       try {
         const users = await getStoreData<User>(Stores.Users);
         setRanking(users);
-      } catch (error) {
-        console.log(error);
+      } catch (err) {
+        if (err instanceof Error) {
+          setRankingError(err.message);
+        } else {
+          setRankingError("Something went wrong");
+        }
       } finally {
         setIsLoading(false);
       }
@@ -23,5 +28,5 @@ export const useRanking = (status: boolean) => {
     handleGetUsers();
   }, [status]);
 
-  return { isLoading, ranking };
+  return { isLoading, ranking, rankingError };
 };

@@ -12,7 +12,7 @@ export const useUser = (userName: string) => {
   useEffect(() => {
     const fetchCookies = async () => {
       setIsLoading(true);
-      
+
       try {
         await getUserData<User>(Stores.Users, userName).then((data) => {
           // Si no hay datos, significa que el usuario es nuevo y se crea
@@ -27,7 +27,7 @@ export const useUser = (userName: string) => {
                 setCookies(0);
               } catch (err) {
                 return console.log(err);
-              }
+              } 
             })();
           } else {
             // Si ya existe, se asignan las cookies y el nivel
@@ -41,6 +41,8 @@ export const useUser = (userName: string) => {
         } else {
           setUserError("Something went wrong");
         }
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchCookies();

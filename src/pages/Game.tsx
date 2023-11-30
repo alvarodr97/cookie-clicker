@@ -14,7 +14,10 @@ export const Game = () => {
   if (!userName) return <Navigate to="/" state={{ from: location }} replace />;
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { cookies, setCookies, nivel, setNivel, setIsFirstRun } = useUser(userName);
+  const { cookies, setCookies, nivel, setNivel, setIsFirstRun, isLoading, userError } = useUser(userName);
+
+  if (isLoading) return <div>Cargando datos del jugador</div>
+  if (userError) return <div>Error al cargar los datos del jugador: {userError}</div>
 
   return (
     <div className="flex flex-col items-center gap-y-12 w-full ">
