@@ -5,9 +5,10 @@ import { useStatus } from "../App";
 export const Home = () => {
   const { status } = useStatus();
 
-  const { ranking, isLoading } = useRanking(status);
+  const { ranking, isLoading, rankingError } = useRanking(status);
 
   if (isLoading) return <div>Cargando página principal...</div>;
+  if (rankingError) return <div>Error al recuperar el ranking: {rankingError} </div>;
 
   const getRankingIndex = (index: number) => {
     const color = ["bg-[#D6AF36]", "bg-[#D7D7D7]", "bg-[#A77044]"];
