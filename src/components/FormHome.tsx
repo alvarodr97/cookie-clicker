@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const FormHome = () => {
-
   const [inputName, setInputName] = useState("");
   const navigate = useNavigate();
 
@@ -22,11 +21,11 @@ export const FormHome = () => {
   return (
     <div>
       <h2 className="pb-1 font-semibold">Introduce tu nombre:</h2>
-      <form onSubmit={handleSubmit} className="flex flex-col">
+      <form onSubmit={handleSubmit} className="flex flex-col" id="form">
         <input
           type="text"
-          name="name"
-          id="name"
+          name="inputName"
+          id="inputName"
           maxLength={10}
           placeholder={`"Cookie Monster"`}
           value={inputName}
@@ -37,7 +36,9 @@ export const FormHome = () => {
 
         <button
           className={`mt-4 p-4 bg-yellow-600 text-black rounded-md transition-all ${
-            inputName !== "" ? "opacity-100 cursor-pointer" : "opacity-40 cursor-not-allowed"
+            inputName !== ""
+              ? "opacity-100 cursor-pointer"
+              : "opacity-40 cursor-not-allowed"
           }`}
           disabled={inputName !== "" ? false : true}
         >
