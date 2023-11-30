@@ -5,21 +5,26 @@
     "icons": [
       {
         "src": "../src/assets/buy.png",
-        "sizes": "128x128",
+        "sizes": "32x32",
         "type": "image/png"
       },
       {
         "src": "../src/assets/exit.png",
-        "sizes": "128x128",
+        "sizes": "32x32",
         "type": "image/png"
       },
       {
         "src": "../src/assets/user.png",
-        "sizes": "128x128",
+        "sizes": "32x32",
         "type": "image/png"
+      },
+      {
+        "src": "cookie.svg",
+        "sizes": "595x595",
+        "type": "image/svg+xml"
       }
     ],
     "start_url": ".",
     "display": "standalone",
-    "background_color": "rgb(254 226 226, 1)"
+    "background_color": "#fee2e2"
   }
