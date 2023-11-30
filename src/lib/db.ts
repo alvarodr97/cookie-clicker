@@ -53,7 +53,6 @@ export const addData = <T>(
       db = request.result;
       const tx = db.transaction(storeName, "readwrite");
       const store = tx.objectStore(storeName);
-      console.log("DATA FUNCION: " + JSON.stringify(data))
       store.add(data);
       resolve(data);
     };
@@ -126,10 +125,8 @@ export const getUserData = <T>(
       db = request.result;
       const tx = db.transaction(storeName, "readonly");
       const store = tx.objectStore(storeName);
-      console.log("storeName: " + storeName)
       const res = store.get(key)
       res.onsuccess = () => {
-        console.log("DATOS USUARIO DB: " + JSON.stringify(res.result))
         resolve(res.result);
       };
     };
