@@ -11,15 +11,14 @@ export const useRanking = (status: boolean) => {
 
     setIsLoading(true);
     const handleGetUsers = async () => {
-        try {
-            const users = await getStoreData<User>(Stores.Users);
+      try {
+        const users = await getStoreData<User>(Stores.Users);
         setRanking(users);
-        } catch (error) {
-            console.log(error);
-        } finally {
-            setIsLoading(false)
-        }
-      
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
+      }
     };
     handleGetUsers();
   }, [status]);

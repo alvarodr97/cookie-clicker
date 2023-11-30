@@ -1,15 +1,24 @@
 import { Outlet, useOutletContext } from "react-router-dom";
-import { useDB2 } from "./hooks/useDB2";
+import { useDB } from "./hooks/useDB";
 
 type ContextType = { status: boolean };
 
 function App() {
-  const { status, isLoading, } = useDB2();
-  
+  const { status, isLoading } = useDB();
 
-  if (isLoading) return <div>Cargando DB...</div>
+  if (isLoading)
+    return (
+      <div className="h-screen w-screen flex items-center justify-center bg-slate-500 text-white">
+        Cargando base de datos...
+      </div>
+    );
 
-  if (!isLoading && !status) return <div>El servidor no responde</div>
+  if (!isLoading && !status)
+    return (
+      <div className="h-screen w-screen flex items-center justify-center bg-slate-500 text-white">
+        El servidor no responde
+      </div>
+    );
 
   return (
     <div className="bg-red-100 h-screen">
@@ -19,7 +28,7 @@ function App() {
         </h1>
         <div className="border-b border-b-yellow-600 w-32 mb-10" />
         <div className="mx-auto w-full flex flex-col items-center justify-center">
-          <Outlet context={{status}} />
+          <Outlet context={{ status }} />
         </div>
       </div>
     </div>
