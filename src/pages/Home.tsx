@@ -5,17 +5,6 @@ export const Home = () => {
 
   const { status, isLoading, ranking } = useDB();
 
-
-  // const [users, setUsers] = useState<User[]|[]>([]);
-  
-  // const handleGetUsers = async () => {
-  //   const users = await getStoreData<User>(Stores.Users);
-  //   setUsers(users);
-  // };
-
-  // useEffect(() => {
-  //   handleGetUsers();
-  // }, [])
   if (isLoading) return <div>Cargando...</div>
 
   if (!isLoading && !status) return <div>El servidor no responde</div>
@@ -31,9 +20,9 @@ export const Home = () => {
       <FormHome />
 
       </div>
-      <div className="p-6 border border-yellow-600 rounded-md">
-        <h2 className="pb-1 font-semibold text-center">Ranking</h2>
-        <div>
+      <div className="p-6 border border-yellow-600 rounded-md self-center flex flex-col">
+        <h2 className="pb-1 font-semibold text-center">Ranking - Top 10</h2>
+        <div className="self-center">
           {
 
             ranking.length == 0
