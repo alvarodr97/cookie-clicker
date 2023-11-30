@@ -1,0 +1,30 @@
+{
+    "short_name": "cookie-clicker",
+    "name": "cookie-clicker",
+    "description": "Play and earn some cookies",
+    "icons": [
+      {
+        "src": "../src/assets/buy.png",
+        "sizes": "32x32",
+        "type": "image/png"
+      },
+      {
+        "src": "../src/assets/exit.png",
+        "sizes": "32x32",
+        "type": "image/png"
+      },
+      {
+        "src": "../src/assets/user.png",
+        "sizes": "32x32",
+        "type": "image/png"
+      },
+      {
+        "src": "cookie.svg",
+        "sizes": "595x595",
+        "type": "image/svg+xml"
+      }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#fee2e2"
+  }
