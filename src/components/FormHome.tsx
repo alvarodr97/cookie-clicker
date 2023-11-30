@@ -1,25 +1,13 @@
-// import { useEffect, useState } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { useDB } from "../hooks/useDB";
-// import { initDB } from "../lib/db";
 
 export const FormHome = () => {
 
-  // const { status, isLoading } = useDB();
-
-  // useEffect(() => {
-  //   initDB();
-  // }, [])
-  
-  
   const [inputName, setInputName] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    // await initDB();
 
     const name = inputName;
 
@@ -28,7 +16,6 @@ export const FormHome = () => {
       return;
     }
 
-    // navigate("/game", { state: { name }, replace: true });
     navigate("/game", { state: { name } });
   };
 
@@ -38,6 +25,8 @@ export const FormHome = () => {
       <form onSubmit={handleSubmit} className="flex flex-col">
         <input
           type="text"
+          name="name"
+          id="name"
           maxLength={10}
           placeholder={`"Cookie Monster"`}
           value={inputName}
