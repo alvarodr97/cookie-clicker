@@ -5,8 +5,7 @@ import {
   Navigate,
   RouterProvider,
 } from "react-router-dom";
-// @ts-expect-error: Unreachable code error
-import { register as registerServiceWorker } from './serviceWorkerRegistration';
+// import { register as registerServiceWorker } from './serviceWorkerRegistration';
 import App from "./App.tsx";
 import "./index.css";
 import { Game } from "./pages/Game.tsx";
@@ -42,4 +41,25 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   </React.StrictMode>
 );
 
-registerServiceWorker();
+// registerServiceWorker();
+
+// if ('serviceWorker' in navigator) {
+//   window.addEventListener('load', () => {
+//     navigator.serviceWorker.register('/src/serviceWorker.js')
+//       .then(() => console.log('Service worker registered'))
+//       .catch(error => console.error('Error registering service worker', error));
+//   });
+// }
+
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./serviceWorker.js', {
+      scope: '.' 
+  }).then(function(registration) {
+      // Registration was successful
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+  }, function(err) {
+      // registration failed :(
+      console.log('ServiceWorker registration failed: ', err);
+  });
+}
