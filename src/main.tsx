@@ -53,7 +53,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./serviceWorker.js', {
+  navigator.serviceWorker.register('serviceWorker.js', {
       scope: '.' 
   }).then(function(registration) {
       // Registration was successful
